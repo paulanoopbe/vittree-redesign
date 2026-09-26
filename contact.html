@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex,nofollow">
+<title>Contact Vittree — Ernakulam Head Office, Bangalore Branch</title>
+<meta name="description" content="Book a free consultation with Vittree. Head office in Panampilly Nagar, Ernakulam; branch in Kalyan Nagar, Bangalore; offices in Europe and the Middle East.">
+<link rel="icon" type="image/png" href="assets/vittree-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="site.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;background:#fff;color:#16212b;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  a:hover{color:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:#5aa83a!important;box-shadow:0 0 0 4px rgba(90,168,58,.14)}
+  ::selection{background:#5aa83a;color:#fff}
+  @keyframes vtUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes vtPop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div data-screen-label="Contact v2" style="position:relative;width:100%;overflow-x:hidden">
+  <dc-import name="SiteNav" active="contact" hint-size="100%,84px"></dc-import>
+
+  <section data-p="hero" style="background:#f5f8f5;padding:200px 40px 160px">
+    <div data-g="split" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:96px;align-items:start">
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:28px;animation:vtUp .7s ease both">Contact</div>
+        <h1 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(48px,5.6vw,80px);line-height:1.02;letter-spacing:-.03em;color:#0f3a57;margin-bottom:28px;animation:vtUp .8s cubic-bezier(.2,.7,.2,1) .08s both">Let's talk about your <em style="color:#3b7a25">business.</em></h1>
+        <p style="font-size:19px;line-height:1.65;color:#4a5660;margin-bottom:64px">Book a free 30-minute consultation. We reply within one working day.</p>
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(22,33,43,.1)">
+          <a href="tel:+919526050011" style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid rgba(22,33,43,.1)"><span style="font-size:14px;color:#6a747b">Call us</span><span style="font-size:18px;font-weight:700;color:#0f3a57">+91 95260 50011</span></a>
+          <a href="mailto:info@vittree.com" style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid rgba(22,33,43,.1)"><span style="font-size:14px;color:#6a747b">Email</span><span style="font-size:18px;font-weight:700;color:#0f3a57">info@vittree.com</span></a>
+          <a href="https://wa.me/919526050033" style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid rgba(22,33,43,.1)"><span style="font-size:14px;color:#6a747b">WhatsApp</span><span style="font-size:18px;font-weight:700;color:#3b7a25">Chat with an advisor →</span></a>
+        </div>
+      </div>
+
+      <div data-b="box" style="background:#fff;border-radius:28px;box-shadow:0 30px 80px rgba(15,58,87,.12);padding:56px;animation:vtUp .9s cubic-bezier(.2,.7,.2,1) .2s both">
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:34px;color:#0f3a57;margin-bottom:8px">Send us a message</h2>
+          <p style="font-size:15.5px;color:#6a747b;margin-bottom:40px">Fields marked * are required.</p>
+          <div data-g="g2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px;margin-bottom:24px">
+            <label style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;color:#3c4750">Full name *<input value="{{ f.name }}" onChange="{{ on.name }}" placeholder="Your name" style="font-family:inherit;font-size:16px;font-weight:400;padding:17px 18px;border:1px solid {{ b.name }};border-radius:12px;color:#16212b"></label>
+            <label style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;color:#3c4750">Company<input value="{{ f.company }}" onChange="{{ on.company }}" placeholder="Company name" style="font-family:inherit;font-size:16px;font-weight:400;padding:17px 18px;border:1px solid rgba(22,33,43,.15);border-radius:12px;color:#16212b"></label>
+            <label style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;color:#3c4750">Email *<input value="{{ f.email }}" onChange="{{ on.email }}" placeholder="you@company.com" style="font-family:inherit;font-size:16px;font-weight:400;padding:17px 18px;border:1px solid {{ b.email }};border-radius:12px;color:#16212b"></label>
+            <label style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;color:#3c4750">Phone<input value="{{ f.phone }}" onChange="{{ on.phone }}" placeholder="+91" style="font-family:inherit;font-size:16px;font-weight:400;padding:17px 18px;border:1px solid rgba(22,33,43,.15);border-radius:12px;color:#16212b"></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;color:#3c4750;margin-bottom:24px">Service you're interested in
+            <select value="{{ f.service }}" onChange="{{ on.service }}" style="font-family:inherit;font-size:16px;font-weight:400;padding:17px 18px;border:1px solid rgba(22,33,43,.15);border-radius:12px;color:#16212b;background:#fff">
+              <option value="">Not sure yet — advise me</option>
+              <sc-for list="{{ options }}" as="o" hint-placeholder-count="8"><option value="{{ o.id }}">{{ o.label }}</option></sc-for>
+            </select>
+          </label>
+          <div style="font-size:14px;font-weight:600;color:#3c4750;margin-bottom:12px">Preferred contact</div>
+          <div style="display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap">
+            <sc-for list="{{ prefs }}" as="p" hint-placeholder-count="3">
+              <sc-if value="{{ p.active }}" hint-placeholder-val="{{ false }}"><span style="font-size:14.5px;font-weight:700;color:#fff;background:#0f3a57;padding:12px 20px;border-radius:40px;cursor:pointer">{{ p.label }}</span></sc-if>
+              <sc-if value="{{ p.inactive }}" hint-placeholder-val="{{ true }}"><span onClick="{{ p.pick }}" style="font-size:14.5px;font-weight:600;color:#3c4750;background:#f1f5f3;padding:12px 20px;border-radius:40px;cursor:pointer">{{ p.label }}</span></sc-if>
+            </sc-for>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;color:#3c4750;margin-bottom:32px">How can we help?<textarea value="{{ f.message }}" onChange="{{ on.message }}" rows="4" placeholder="Tell us briefly about your business and what you need" style="font-family:inherit;font-size:16px;font-weight:400;padding:17px 18px;border:1px solid rgba(22,33,43,.15);border-radius:12px;color:#16212b;resize:vertical"></textarea></label>
+          <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}"><div style="font-size:14.5px;color:#c0392b;background:#fdf0ee;padding:12px 16px;border-radius:10px;margin-bottom:16px">{{ errMsg }}</div></sc-if>
+          <span onClick="{{ submit }}" style="display:flex;justify-content:center;font-size:17px;font-weight:700;color:#fff;background:#0f3a57;padding:20px;border-radius:40px;cursor:pointer;transition:background .25s" style-hover="background:#3b7a25">Send message</span>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:60px 10px;animation:vtPop .45s cubic-bezier(.2,.7,.2,1) both">
+            <div style="width:84px;height:84px;border-radius:50%;background:#e8f3e1;color:#3b7a25;font-size:36px;display:flex;align-items:center;justify-content:center;margin:0 auto 26px">✓</div>
+            <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:40px;color:#0f3a57;margin-bottom:14px">Thank you, {{ firstName }}.</h2>
+            <p style="font-size:17px;line-height:1.6;color:#5a646c;max-width:420px;margin:0 auto 30px">We've received your enquiry{{ serviceNote }}. A specialist will reach you by {{ prefLabel }} within one working day.</p>
+            <a href="index.html" style="display:inline-block;font-size:15px;font-weight:700;color:#0f3a57;border-bottom:2px solid #5aa83a;padding-bottom:4px">Back to home</a>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#fff;padding:160px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">What happens next</div>
+      <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:#0f3a57;margin-bottom:72px">Three simple steps.</h2>
+      <div data-g="g3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px">
+        <div style="border-top:2px solid #5aa83a;padding-top:28px"><div style="font-family:'Spectral',serif;font-size:40px;color:#5aa83a;line-height:1;margin-bottom:24px">01</div><p style="font-size:18px;line-height:1.55;color:#0f3a57;font-weight:600">We review your enquiry and assign the right specialist.</p></div>
+        <div style="border-top:2px solid #3f97d1;padding-top:28px"><div style="font-family:'Spectral',serif;font-size:40px;color:#3f97d1;line-height:1;margin-bottom:24px">02</div><p style="font-size:18px;line-height:1.55;color:#0f3a57;font-weight:600">A free call to understand your needs.</p></div>
+        <div style="border-top:2px solid #5aa83a;padding-top:28px"><div style="font-family:'Spectral',serif;font-size:40px;color:#5aa83a;line-height:1;margin-bottom:24px">03</div><p style="font-size:18px;line-height:1.55;color:#0f3a57;font-weight:600">A clear proposal with scope, timeline and fees.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#f5f8f5;padding:160px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:#0f3a57;margin-bottom:64px">Our offices.</h2>
+      <div data-g="g4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+        <div style="display:flex;flex-direction:column;background:#fff;border-radius:20px;padding:36px 30px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#3b7a25;margin-bottom:12px">HEAD OFFICE</div><h3 style="font-family:'Spectral',serif;font-weight:500;font-size:28px;color:#0f3a57;margin-bottom:16px">Ernakulam</h3><p style="font-size:15.5px;line-height:1.65;color:#5a646c;margin-bottom:24px">3rd Floor, EAK Tower, Main Avenue, Panampilly Nagar, Kochi – 682 036</p><a href="tel:+919526050011" style="margin-top:auto;font-size:15px;font-weight:700;color:#3b7a25">+91 95260 50011</a></div>
+        <div style="display:flex;flex-direction:column;background:#fff;border-radius:20px;padding:36px 30px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#6a747b;margin-bottom:12px">BRANCH</div><h3 style="font-family:'Spectral',serif;font-weight:500;font-size:28px;color:#0f3a57;margin-bottom:16px">Bangalore</h3><p style="font-size:15.5px;line-height:1.65;color:#5a646c;margin-bottom:24px">No. 9, 2nd Floor, Mythri Legacy, Chelekere Road, Kalyan Nagar – 560 043</p><a href="tel:+919886333041" style="margin-top:auto;font-size:15px;font-weight:700;color:#3b7a25">+91 98863 33041</a></div>
+        <div style="display:flex;flex-direction:column;background:#fff;border-radius:20px;padding:36px 30px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#3f97d1;margin-bottom:12px">EUROPE</div><h3 style="font-family:'Spectral',serif;font-weight:500;font-size:28px;color:#0f3a57;margin-bottom:16px">Brussels</h3><p style="font-size:15.5px;line-height:1.65;color:#5a646c;margin-bottom:24px">Avenue du Martin-Pêcheur, Box 24, 1170 Watermael-Boitsfort, Brussels, Belgium</p><a href="tel:+32455143567" style="margin-top:auto;font-size:15px;font-weight:700;color:#3b7a25">+32 455 14 3567</a></div>
+        <div style="display:flex;flex-direction:column;background:#fff;border-radius:20px;padding:36px 30px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#b7791f;margin-bottom:12px">MIDDLE EAST</div><h3 style="font-family:'Spectral',serif;font-weight:500;font-size:28px;color:#0f3a57;margin-bottom:16px">Dubai</h3><p style="font-size:15.5px;line-height:1.65;color:#5a646c;margin-bottom:24px">203, Wasl Building R453, Al Qusais, Dubai, UAE</p><a href="tel:+971508571482" style="margin-top:auto;font-size:15px;font-weight:700;color:#3b7a25">+971 50 857 1482</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#fff;padding:160px 40px">
+    <div data-g="split" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:96px;align-items:start">
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">Our firms</div>
+        <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(34px,3.8vw,50px);line-height:1.1;letter-spacing:-.02em;color:#0f3a57;margin-bottom:24px">Same ethos. Same pedigree. Different specialisations.</h2>
+        <p style="font-size:17px;line-height:1.7;color:#5a646c;max-width:400px">Two firms under one roof, each focused on what it does best — so every piece of work gets specialist attention, with one relationship and one standard of excellence.</p>
+      </div>
+      <div style="border-top:1px solid rgba(22,33,43,.1)">
+        <div style="padding:40px 0;border-bottom:1px solid rgba(22,33,43,.1)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="width:8px;height:8px;border-radius:50%;background:#2e9a8a"></span><span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2e9a8a">Accounting &amp; Compliance</span></div>
+          <div style="font-size:21px;font-weight:700;color:#0f3a57;margin-bottom:12px">Vittree Business Solutions Private Ltd</div>
+          <p style="font-size:16.5px;line-height:1.7;color:#4a5660;margin-bottom:16px;max-width:640px">Runs the recurring finance work that keeps a business compliant month after month — for companies in India and for firms abroad that outsource their accounting.</p>
+          <details style="margin-bottom:18px"><summary style="list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#0f3a57;padding-bottom:3px;border-bottom:1.5px solid rgba(15,58,87,.25)">View services <span style="font-size:12px;color:#3b7a25">▾</span></summary><div style="display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14.5px;color:#3c4750;padding-top:16px"><span>Bookkeeping &amp; MIS</span><span>GST &amp; Income Tax</span><span>Financial Statements</span><span>Audit &amp; Assurance</span><span>Virtual CFO</span><span>EU &amp; UAE VAT</span><span>Data Analytics</span></div></details>
+          <div style="font-size:14.5px;line-height:1.6;color:#6a747b">27/540, 3rd Floor, EAK Towers, Main Avenue, Panampilly Nagar, Kochi – 682 036</div>
+        </div>
+        <div style="padding:40px 0;border-bottom:1px solid rgba(22,33,43,.1)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="width:8px;height:8px;border-radius:50%;background:#3b7a25"></span><span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3b7a25">Advisory &amp; Growth</span></div>
+          <div style="font-size:21px;font-weight:700;color:#0f3a57;margin-bottom:12px">Vittree Corporate Consultancy LLP</div>
+          <p style="font-size:16.5px;line-height:1.7;color:#4a5660;margin-bottom:16px;max-width:640px">Leads the advisory work that helps a business start, structure, fund and grow — in India and across the UAE, Europe and the USA.</p>
+          <details style="margin-bottom:18px"><summary style="list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#0f3a57;padding-bottom:3px;border-bottom:1.5px solid rgba(15,58,87,.25)">View services <span style="font-size:12px;color:#3b7a25">▾</span></summary><div style="display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14.5px;color:#3c4750;padding-top:16px"><span>Company Setup &amp; Cross-Border</span><span>Legal &amp; Corporate</span><span>Growth &amp; Funding</span><span>Trade &amp; Customs</span><span>Strategy &amp; Valuation</span></div></details>
+          <div style="font-size:14.5px;line-height:1.6;color:#6a747b">Left Wing, 3rd Floor, EAK Towers, Main Avenue, Panampilly Nagar, Kochi – 682 036</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { f: { name: '', company: '', email: '', phone: '', service: '', message: '' }, pref: 'email', sent: false, tried: false };
+  componentDidMount() {
+    const s = new URLSearchParams(location.search).get('s');
+    this._iv = setInterval(() => { if (window.VT) { clearInterval(this._iv); if (s && window.VT.byId[s]) this.setState(p => ({ f: { ...p.f, service: s } })); else this.forceUpdate(); } }, 30);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const VT = window.VT, st = this.state, f = st.f;
+    const on = {}; ['name', 'company', 'email', 'phone', 'service', 'message'].forEach(k => on[k] = e => { const v = e.target.value; this.setState(p => ({ f: { ...p.f, [k]: v } })); });
+    const emailOk = /\S+@\S+\.\S+/.test(f.email), nameOk = f.name.trim().length > 1;
+    const errs = []; if (!nameOk) errs.push('your name'); if (!emailOk) errs.push('a valid email');
+    const bad = 'rgba(192,57,43,.6)', ok = 'rgba(22,33,43,.15)';
+    const options = VT ? VT.cats.flatMap(c => VT.services.filter(s => s.cat === c.id).map(s => ({ id: s.id, label: c.name + ' — ' + s.name }))) : [];
+    const prefDef = [['email', 'Email'], ['phone', 'Phone call'], ['whatsapp', 'WhatsApp']];
+    const prefs = prefDef.map(([id, label]) => ({ label, active: st.pref === id, inactive: st.pref !== id, pick: () => this.setState({ pref: id }) }));
+    const svc = VT && f.service ? VT.byId[f.service] : null;
+    return {
+      f, on, options, prefs,
+      b: { name: st.tried && !nameOk ? bad : ok, email: st.tried && !emailOk ? bad : ok },
+      hasErr: st.tried && errs.length > 0, errMsg: 'Please add ' + errs.join(' and ') + '.',
+      sent: st.sent, notSent: !st.sent, firstName: f.name.trim().split(' ')[0],
+      serviceNote: svc ? ' about ' + svc.name : '',
+      prefLabel: prefDef.find(p => p[0] === st.pref)[1].toLowerCase(),
+      submit: () => { if (errs.length) return this.setState({ tried: true }); this.setState({ sent: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

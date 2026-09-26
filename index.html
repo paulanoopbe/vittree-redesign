@@ -1,16 +1,435 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
-<title>Vittree website redesign — review</title>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-<style>*{box-sizing:border-box;margin:0}body{font-family:'Hanken Grotesk',sans-serif;color:#16212b;background:#fff;padding:12vh 24px}a{color:#0f3a57;text-decoration:none}a:hover{color:#3b7a25}</style></head>
-<body><main style="max-width:880px;margin:0 auto">
-<img src="v3/assets/vittree-logo.png" alt="Vittree" style="height:64px;margin-bottom:56px">
-<div style="font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#3b7a25;margin-bottom:16px">Website redesign · for review</div>
-<h1 style="font-family:Spectral,serif;font-weight:300;font-size:clamp(40px,6vw,64px);line-height:1.1;color:#0f3a57;margin-bottom:24px">Two directions. Tell us what you think.</h1>
-<p style="font-size:18px;line-height:1.7;color:#5a646c;max-width:600px;margin-bottom:64px">This is a private preview, not the live site. Open each version, click around, and send comments to <a href="mailto:anoop@vittree.com" style="font-weight:600">anoop@vittree.com</a>.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
-<a href="v2/index.html" style="display:block;border:1px solid rgba(22,33,43,.12);border-radius:20px;padding:36px"><div style="font-size:13px;color:#8a949b;margin-bottom:12px">Version 2</div><div style="font-family:Spectral,serif;font-size:30px;margin-bottom:10px">Structured</div><div style="font-size:15px;line-height:1.6;color:#5a646c;margin-bottom:24px">Cards, colour blocks, full detail on every section.</div><span style="font-weight:600;color:#3b7a25">Open v2 →</span></a>
-<a href="v3/index.html" style="display:block;border:1px solid rgba(22,33,43,.12);border-radius:20px;padding:36px"><div style="font-size:13px;color:#8a949b;margin-bottom:12px">Version 3</div><div style="font-family:Spectral,serif;font-size:30px;margin-bottom:10px">Minimal</div><div style="font-size:15px;line-height:1.6;color:#5a646c;margin-bottom:24px">Lighter, typographic home page with motion.</div><span style="font-weight:600;color:#3b7a25">Open v3 →</span></a>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex,nofollow">
+<title>Vittree | Company Registration, GST, Accounting, Legal &amp; Funding Advisory</title>
+<meta name="description" content="Vittree helps businesses start right, stay compliant and grow: company &amp; LLP registration, accounting, GST, income tax, trademarks, FDI/ODI, SEZ, government grants and trade schemes.">
+<link rel="icon" type="image/png" href="assets/vittree-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="site.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Hanken Grotesk',sans-serif;background:#fff;color:#16212b;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  a:hover{color:inherit}
+  ::selection{background:#5aa83a;color:#fff}
+  @keyframes vtUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes vtWord{from{opacity:0;transform:translateY(40%)}to{opacity:1;transform:none}}
+  @keyframes vtSwap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes vtMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+
+<div data-screen-label="Home v2" style="position:relative;width:100%;overflow-x:hidden">
+  <dc-import name="SiteNav" active="home" hint-size="100%,84px"></dc-import>
+
+  <header data-p="hero" style="background:#f5f8f5;padding:200px 40px 150px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:56px;font-size:13px;color:#6a747b">
+        <span style="margin-right:8px">Showing the site for</span>
+        <sc-for list="{{ regions }}" as="r" hint-placeholder-count="3">
+          <sc-if value="{{ r.active }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#fff;background:#0f3a57;padding:8px 14px;border-radius:30px;white-space:nowrap">{{ r.label }}</span></sc-if>
+          <sc-if value="{{ r.inactive }}" hint-placeholder-val="{{ true }}"><span onClick="{{ r.pick }}" style="font-size:13px;font-weight:600;color:#3c4750;background:#fff;border:1px solid rgba(22,33,43,.12);padding:7px 14px;border-radius:30px;cursor:pointer;white-space:nowrap">{{ r.label }}</span></sc-if>
+        </sc-for>
+      </div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:32px">{{ R.eyebrow }}</div>
+      <h1 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(46px,6.2vw,92px);line-height:1.1;letter-spacing:-.03em;color:#0f3a57;margin-bottom:44px;max-width:1000px">{{ R.h1a }}<br>{{ R.h1b }}<br>{{ heroWord }}</h1>
+      <p style="font-size:21px;line-height:1.65;color:#4a5660;max-width:660px;margin-bottom:52px">{{ R.sub }}</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:72px">
+        <a href="{{ R.cta1href }}" style="font-size:16px;font-weight:700;color:#fff;background:#0f3a57;padding:19px 32px;border-radius:40px;transition:background .25s" style-hover="background:#0a2c44">{{ R.cta1 }}</a>
+        <a href="{{ R.cta2href }}" style="font-size:16px;font-weight:700;color:#0f3a57;background:#fff;border:1px solid rgba(15,58,87,.2);padding:19px 30px;border-radius:40px">{{ R.cta2 }}</a>
+      </div>
+      <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:36px;border-top:1px solid rgba(22,33,43,.1);font-size:15px;font-weight:600;color:#3c4750">
+        <sc-for list="{{ R.trust }}" as="t" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#5aa83a"></span>{{ t }}</span></sc-for>
+      </div>
+    </div>
+  </header>
+
+  <section data-p="padx" style="background:#fff;padding:0 40px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:40px 0;border-bottom:1px solid rgba(22,33,43,.08)">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3b7a25">{{ R.officeLabel }}</span><span style="font-family:'Spectral',serif;font-size:26px;color:#0f3a57">{{ R.office }}</span></div>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center;font-size:16px;font-weight:700">
+        <span style="font-weight:500;color:#5a646c">{{ R.hours }}</span>
+        <a href="{{ R.telHref }}" style="color:#0f3a57">{{ R.tel }}</a>
+        <a href="{{ R.waHref }}" style="color:#3b7a25">WhatsApp →</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="background:#0f3a57;padding:24px 0;overflow:hidden">
+    <div style="display:flex;width:max-content;animation:vtMarquee 60s linear infinite">
+      <div style="display:flex;gap:56px;padding-right:56px;font-family:'Spectral',serif;font-size:22px;color:#eef3f7;white-space:nowrap">
+        <span>Company &amp; LLP Formation</span><span>GST &amp; Income Tax</span><span>Government Grants</span><span>FDI &amp; ODI</span><span>Angel &amp; Seed Funding</span><span>Duty-Free Imports</span><span>Export Refunds</span><span>Tax-Free Export Zones</span><span>Trademark &amp; Copyright</span>
+      </div>
+      <div aria-hidden="true" style="display:flex;gap:56px;padding-right:56px;font-family:'Spectral',serif;font-size:22px;color:#eef3f7;white-space:nowrap">
+        <span>Company &amp; LLP Formation</span><span>GST &amp; Income Tax</span><span>Government Grants</span><span>FDI &amp; ODI</span><span>Angel &amp; Seed Funding</span><span>Duty-Free Imports</span><span>Export Refunds</span><span>Tax-Free Export Zones</span><span>Trademark &amp; Copyright</span>
+      </div>
+    </div>
+  </div>
+
+  <section data-p="pad" style="background:#fff;padding:160px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal="0" style="max-width:640px;margin-bottom:56px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">Where are you today?</div>
+        <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(38px,4.4vw,58px);line-height:1.06;letter-spacing:-.02em;color:#0f3a57">Tell us what you're working on.</h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:56px">
+        <sc-for list="{{ needs }}" as="n" hint-placeholder-count="5">
+          <sc-if value="{{ n.active }}" hint-placeholder-val="{{ false }}"><span style="font-size:15px;font-weight:700;color:#fff;background:#0f3a57;padding:13px 22px;border-radius:40px;cursor:pointer">{{ n.label }}</span></sc-if>
+          <sc-if value="{{ n.inactive }}" hint-placeholder-val="{{ true }}"><span onClick="{{ n.pick }}" style="font-size:15px;font-weight:600;color:#3c4750;background:#f1f5f3;padding:13px 22px;border-radius:40px;cursor:pointer;transition:background .2s" style-hover="background:#e3ebe6">{{ n.label }}</span></sc-if>
+        </sc-for>
+      </div>
+      <div data-g="g4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+        <sc-for list="{{ needItems }}" as="s" hint-placeholder-count="4">
+          <a href="{{ s.href }}" style="display:flex;flex-direction:column;gap:14px;padding:32px 28px;border-radius:20px;background:#f5f8f5;min-height:220px;transition:transform .3s,background .3s;animation:vtSwap .45s cubic-bezier(.2,.7,.2,1) both" style-hover="transform:translateY(-4px);background:#eef3ef">
+            <span style="width:10px;height:10px;border-radius:50%;background:{{ s.color }}"></span>
+            <span style="font-size:19px;font-weight:700;color:#0f3a57;line-height:1.3">{{ s.name }}</span>
+            <span style="font-size:15px;line-height:1.55;color:#5a646c">{{ s.short }}</span>
+            <span style="margin-top:auto;font-size:18px;color:#3b7a25">→</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="margin-top:40px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;font-size:15px;color:#6a747b">
+        <span>Free 30-minute first consultation</span>
+        <a href="contact.html" style="font-weight:700;color:#3b7a25">Talk to an advisor →</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#0a2c44;color:#eef3f7;padding:120px 40px">
+    <div data-g="g4s" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px">
+      <div><div style="font-family:'Spectral',serif;font-size:clamp(46px,5vw,64px);line-height:1"><span data-count="500" data-suffix="+">500+</span></div><div style="margin-top:16px;font-size:16px;color:rgba(238,243,247,.7)">Businesses served</div></div>
+      <div><div style="font-family:'Spectral',serif;font-size:clamp(46px,5vw,64px);line-height:1"><span data-count="25" data-prefix="₹" data-suffix=" Cr+">₹25 Cr+</span></div><div style="margin-top:16px;font-size:16px;color:rgba(238,243,247,.7)">Funding &amp; subsidies facilitated</div></div>
+      <div><div style="font-family:'Spectral',serif;font-size:clamp(46px,5vw,64px);line-height:1"><span data-count="15" data-suffix="+">15+</span></div><div style="margin-top:16px;font-size:16px;color:rgba(238,243,247,.7)">Years of chartered experience</div></div>
+      <div><div style="font-family:'Spectral',serif;font-size:clamp(46px,5vw,64px);line-height:1"><span data-count="98" data-suffix="%">98%</span></div><div style="margin-top:16px;font-size:16px;color:rgba(238,243,247,.7)">Filings delivered before deadline</div></div>
+    </div>
+  </section>
+
+  <section id="services" data-p="pad" style="background:#fff;padding:160px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal="0" style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:56px">
+        <div style="max-width:680px">
+          <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">What we do</div>
+          <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(38px,4.4vw,58px);line-height:1.06;letter-spacing:-.02em;color:#0f3a57">Everything your business needs, under one roof.</h2>
+        </div>
+        <a href="services.html" style="font-size:16px;font-weight:700;color:#0f3a57;border-bottom:2px solid #5aa83a;padding-bottom:4px">Browse all services →</a>
+      </div>
+      <div data-s="chips" style="display:flex;flex-wrap:wrap;gap:4px 36px;border-bottom:1px solid rgba(22,33,43,.1);margin-bottom:48px">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+          <sc-if value="{{ c.active }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#0f3a57;padding:18px 0;border-bottom:2px solid #0f3a57;margin-bottom:-1px;cursor:pointer"><span style="width:8px;height:8px;border-radius:50%;background:{{ c.color }}"></span>{{ c.name }} <span style="font-size:13px;font-weight:600;color:#8a949b">{{ c.count }}</span></span></sc-if>
+          <sc-if value="{{ c.inactive }}" hint-placeholder-val="{{ true }}"><span onClick="{{ c.pick }}" style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#6a747b;padding:18px 0;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer" style-hover="color:#0f3a57"><span style="width:8px;height:8px;border-radius:50%;background:{{ c.color }}"></span>{{ c.name }} <span style="font-size:13px;font-weight:600;color:#a0a8ae">{{ c.count }}</span></span></sc-if>
+        </sc-for>
+      </div>
+      <p style="font-size:19px;line-height:1.6;color:#4a5660;max-width:680px;margin-bottom:40px">{{ activeCat.blurb }}</p>
+      <div data-g="g3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px">
+        <sc-for list="{{ activeCat.items }}" as="s" hint-placeholder-count="4">
+          <a href="{{ s.href }}" style="display:flex;flex-direction:column;gap:12px;border:1px solid rgba(22,33,43,.08);border-radius:20px;padding:32px;min-height:200px;transition:transform .3s,box-shadow .3s;animation:vtSwap .5s cubic-bezier(.2,.7,.2,1) both" style-hover="transform:translateY(-4px);box-shadow:0 24px 48px rgba(15,58,87,.1)">
+            <span style="font-family:'Spectral',serif;font-size:24px;line-height:1.2;color:#0f3a57">{{ s.name }}</span>
+            <span style="font-size:15.5px;line-height:1.6;color:#5a646c">{{ s.short }}</span>
+            <span style="margin-top:auto;font-size:14px;font-weight:700;color:#3b7a25">Learn more →</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#f5f8f5;padding:160px 40px">
+    <div data-g="split" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:112px;align-items:center">
+      <div data-reveal="0" style="position:relative">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:#e7eee9">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=75" alt="Vittree advisors in a client meeting" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        </div>
+        <div data-f="1" style="position:absolute;right:-32px;bottom:56px;background:#fff;border-radius:18px;padding:24px 28px;box-shadow:0 30px 60px rgba(15,58,87,.16);max-width:260px">
+          <div style="font-family:'Spectral',serif;font-size:40px;line-height:1;color:#3b7a25;margin-bottom:8px">Vitta</div>
+          <div style="font-size:14.5px;line-height:1.55;color:#4a5660">Sanskrit for <strong style="color:#0f3a57">wealth</strong> — and the root of everything we do.</div>
+        </div>
+      </div>
+      <div>
+        <div data-reveal="0" style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">Why Vittree</div>
+        <h2 data-reveal="60" style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:#0f3a57;margin-bottom:28px">Deep roots in compliance. Room to grow.</h2>
+        <p data-reveal="100" style="font-size:18px;line-height:1.7;color:#4a5660;margin-bottom:56px">Like a tree, a business needs strong roots before it can branch out. We get your structure, books and filings right — then help you find the capital, schemes and strategy to grow.</p>
+        <div style="display:flex;flex-direction:column;gap:36px">
+          <div data-reveal="140" style="padding-left:24px;border-left:2px solid #3f97d1"><h3 style="font-size:20px;font-weight:700;color:#0f3a57;margin-bottom:8px">One team, start to scale</h3><p style="font-size:16.5px;line-height:1.65;color:#5a646c">Incorporation, tax, legal and funding handled together — no handoffs between firms.</p></div>
+          <div data-reveal="200" style="padding-left:24px;border-left:2px solid #5aa83a"><h3 style="font-size:20px;font-weight:700;color:#0f3a57;margin-bottom:8px">Chartered rigour</h3><p style="font-size:16.5px;line-height:1.65;color:#5a646c">Every filing and opinion reviewed by qualified professionals before it leaves us.</p></div>
+          <div data-reveal="260" style="padding-left:24px;border-left:2px solid #b7791f"><h3 style="font-size:20px;font-weight:700;color:#0f3a57;margin-bottom:8px">We find money you're missing</h3><p style="font-size:16.5px;line-height:1.65;color:#5a646c">Grants, subsidies, duty deferment and export incentives most businesses never claim.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries" data-p="pad" style="background:#fff;padding:160px 0;overflow:hidden">
+    <div data-p="padx" style="max-width:1200px;margin:0 auto 64px;padding:0 40px">
+      <div data-reveal="0" data-g="split" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">Industries we serve</div>
+          <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:#0f3a57">Sector knowledge that makes the difference.</h2>
+        </div>
+        <div>
+          <p style="font-size:17px;line-height:1.65;color:#5a646c;margin-bottom:20px">Every industry has its own licences, tax treatments and incentives. We know the ones that matter in yours — across these sectors and many more.</p>
+          <a href="contact.html" style="font-size:16px;font-weight:700;color:#0f3a57;border-bottom:2px solid #5aa83a;padding-bottom:4px">Don't see yours? Ask us →</a>
+        </div>
+      </div>
+    </div>
+    <div style="-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)">
+      <div data-marq="1" style="display:flex;gap:28px;width:max-content;animation:vtMarquee 110s linear infinite">
+        <sc-for list="{{ industriesLoop }}" as="i" hint-placeholder-count="0">
+          <div data-ind="1" style="flex-shrink:0;width:340px;background:#fff;border-radius:20px;overflow:hidden;border:1px solid rgba(22,33,43,.08)">
+            <div style="position:relative;height:220px;overflow:hidden;background:#e6f1f9">
+              <sc-if value="{{ i.img }}" hint-placeholder-val="{{ false }}"><img data-ph="1" data-src="{{ i.img }}" alt="{{ i.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)"></sc-if>
+            </div>
+            <div style="padding:28px 28px 32px">
+              <h3 style="font-family:'Spectral',serif;font-weight:500;font-size:24px;line-height:1.15;color:#0f3a57;margin-bottom:10px">{{ i.name }}</h3>
+              <p style="font-size:15px;line-height:1.6;color:#5a646c;white-space:normal">{{ i.d }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="finder" data-p="pad" style="background:#e8f3e1;padding:160px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal="0" style="max-width:680px;margin-bottom:72px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">Funding &amp; scheme finder</div>
+        <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:#1f4d12;margin-bottom:24px">See what your business may qualify for.</h2>
+        <p style="font-size:18px;line-height:1.65;color:#3f5a35">Two quick questions. We'll show the grants, funding routes and trade schemes worth exploring first.</p>
+      </div>
+      <div data-g="split" style="display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:80px;align-items:start">
+        <div>
+          <div style="font-size:15px;font-weight:700;color:#1f4d12;margin-bottom:16px">1. Your stage</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px">
+            <sc-for list="{{ stages }}" as="o" hint-placeholder-count="4">
+              <sc-if value="{{ o.active }}" hint-placeholder-val="{{ false }}"><span style="font-size:15px;font-weight:700;color:#fff;background:#1f4d12;padding:13px 20px;border-radius:40px;cursor:pointer">{{ o.label }}</span></sc-if>
+              <sc-if value="{{ o.inactive }}" hint-placeholder-val="{{ true }}"><span onClick="{{ o.pick }}" style="font-size:15px;font-weight:600;color:#1f4d12;background:#fff;padding:13px 20px;border-radius:40px;cursor:pointer">{{ o.label }}</span></sc-if>
+            </sc-for>
+          </div>
+          <div style="font-size:15px;font-weight:700;color:#1f4d12;margin-bottom:16px">2. Your sector</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ sectors }}" as="o" hint-placeholder-count="4">
+              <sc-if value="{{ o.active }}" hint-placeholder-val="{{ false }}"><span style="font-size:15px;font-weight:700;color:#fff;background:#1f4d12;padding:13px 20px;border-radius:40px;cursor:pointer">{{ o.label }}</span></sc-if>
+              <sc-if value="{{ o.inactive }}" hint-placeholder-val="{{ true }}"><span onClick="{{ o.pick }}" style="font-size:15px;font-weight:600;color:#1f4d12;background:#fff;padding:13px 20px;border-radius:40px;cursor:pointer">{{ o.label }}</span></sc-if>
+            </sc-for>
+          </div>
+        </div>
+        <div data-b="box" style="background:#fff;border-radius:24px;padding:44px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+            <span style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6a747b">Worth exploring</span>
+            <span style="font-size:13px;font-weight:700;color:#3b7a25;background:#e8f3e1;padding:7px 13px;border-radius:30px">{{ finderLabel }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <sc-for list="{{ finderResults }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.href }}" style="display:flex;gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid rgba(22,33,43,.08);animation:vtSwap .45s cubic-bezier(.2,.7,.2,1) both">
+                <span style="font-family:'Spectral',serif;font-size:24px;color:#5aa83a;width:34px;flex-shrink:0">{{ s.num }}</span>
+                <span style="flex:1;min-width:0"><span style="display:block;font-size:17px;font-weight:700;color:#0f3a57;margin-bottom:4px">{{ s.name }}</span><span style="display:block;font-size:15px;line-height:1.5;color:#6a747b">{{ s.short }}</span></span>
+                <span style="font-size:18px;color:#3b7a25">→</span>
+              </a>
+            </sc-for>
+          </div>
+          <a href="contact.html?s=govt-funding" style="display:flex;justify-content:center;margin-top:32px;font-size:16px;font-weight:700;color:#fff;background:#3b7a25;padding:18px;border-radius:40px;transition:background .25s" style-hover="background:#1f4d12">Get a free eligibility assessment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#fff;padding:160px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal="0" style="max-width:640px;margin-bottom:80px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">How we work</div>
+        <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:#0f3a57">Simple, clear, on time.</h2>
+      </div>
+      <div data-g="g4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px">
+        <div data-reveal="0" style="border-top:2px solid #5aa83a;padding-top:32px"><div style="font-family:'Spectral',serif;font-size:44px;color:#5aa83a;line-height:1;margin-bottom:28px">01</div><h3 style="font-size:20px;font-weight:700;color:#0f3a57;margin-bottom:12px">Consult</h3><p style="font-size:16px;line-height:1.65;color:#5a646c">A free first conversation to understand your business and goals.</p></div>
+        <div data-reveal="80" style="border-top:2px solid #3f97d1;padding-top:32px"><div style="font-family:'Spectral',serif;font-size:44px;color:#3f97d1;line-height:1;margin-bottom:28px">02</div><h3 style="font-size:20px;font-weight:700;color:#0f3a57;margin-bottom:12px">Plan</h3><p style="font-size:16px;line-height:1.65;color:#5a646c">A fixed-scope proposal with timelines, documents needed and fees.</p></div>
+        <div data-reveal="160" style="border-top:2px solid #5aa83a;padding-top:32px"><div style="font-family:'Spectral',serif;font-size:44px;color:#5aa83a;line-height:1;margin-bottom:28px">03</div><h3 style="font-size:20px;font-weight:700;color:#0f3a57;margin-bottom:12px">Execute</h3><p style="font-size:16px;line-height:1.65;color:#5a646c">Your dedicated manager handles filings, drafting and follow-ups.</p></div>
+        <div data-reveal="240" style="border-top:2px solid #3f97d1;padding-top:32px"><div style="font-family:'Spectral',serif;font-size:44px;color:#3f97d1;line-height:1;margin-bottom:28px">04</div><h3 style="font-size:20px;font-weight:700;color:#0f3a57;margin-bottom:12px">Support</h3><p style="font-size:16px;line-height:1.65;color:#5a646c">A compliance calendar and proactive reminders, all year round.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#0f3a57;color:#eef3f7;padding:160px 40px">
+    <div style="max-width:1000px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:56px;gap:20px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9fd67a">Client stories</div>
+        <div style="display:flex;gap:10px">
+          <span onClick="{{ prevT }}" style="width:52px;height:52px;border-radius:50%;border:1px solid rgba(238,243,247,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px">←</span>
+          <span onClick="{{ nextT }}" style="width:52px;height:52px;border-radius:50%;background:#5aa83a;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#fff">→</span>
+        </div>
+      </div>
+      <sc-for list="{{ currentT }}" as="t" hint-placeholder-count="1">
+        <div style="animation:vtSwap .6s cubic-bezier(.2,.7,.2,1) both;min-height:300px">
+          <p style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(28px,3.2vw,42px);line-height:1.35;margin-bottom:48px">“{{ t.q }}”</p>
+          <div style="font-size:16px;font-weight:700">{{ t.who }}</div>
+          <div style="font-size:14.5px;color:rgba(238,243,247,.6);margin-top:4px">{{ t.org }}</div>
+        </div>
+      </sc-for>
+      <div style="display:flex;gap:10px;margin-top:48px">
+        <sc-for list="{{ tDots }}" as="d" hint-placeholder-count="4">
+          <sc-if value="{{ d.active }}" hint-placeholder-val="{{ false }}"><span style="width:40px;height:4px;border-radius:4px;background:#5aa83a"></span></sc-if>
+          <sc-if value="{{ d.inactive }}" hint-placeholder-val="{{ true }}"><span onClick="{{ d.pick }}" style="width:20px;height:4px;border-radius:4px;background:rgba(238,243,247,.25);cursor:pointer"></span></sc-if>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#fff;padding:160px 40px">
+    <div style="max-width:880px;margin:0 auto">
+      <div data-reveal="0" style="margin-bottom:56px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:20px">Questions</div>
+        <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:#0f3a57;margin-bottom:20px">Frequently asked.</h2>
+        <p style="font-size:17px;line-height:1.6;color:#5a646c">Can't find your answer? Our team usually replies within one working day. <a href="contact.html" style="font-weight:700;color:#0f3a57;border-bottom:2px solid #5aa83a">Ask a question →</a></p>
+      </div>
+      <div style="display:flex;flex-direction:column;border-top:1px solid rgba(22,33,43,.1)">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid rgba(22,33,43,.1)">
+            <div onClick="{{ f.toggle }}" style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:30px 0;cursor:pointer">
+              <span style="font-size:19px;font-weight:600;color:#0f3a57">{{ f.q }}</span>
+              <span style="font-size:26px;color:#3b7a25;transition:transform .3s;transform:rotate({{ f.rot }}deg);flex-shrink:0">+</span>
+            </div>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:17px;line-height:1.7;color:#5a646c;padding:0 48px 32px 0;animation:vtSwap .35s ease both">{{ f.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-p="pad" style="background:#f5f8f5;padding:160px 40px;text-align:center">
+    <div style="max-width:780px;margin:0 auto">
+      <h2 data-reveal="0" style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(40px,4.8vw,64px);line-height:1.04;letter-spacing:-.02em;color:#0f3a57;margin-bottom:24px">Let's build something that lasts.</h2>
+      <p style="font-size:19px;line-height:1.65;color:#5a646c;margin-bottom:48px">Book a free 30-minute consultation. We'll listen, then tell you exactly what you need — and what you don't.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" style="font-size:16px;font-weight:700;color:#fff;background:#0f3a57;padding:19px 32px;border-radius:40px;transition:background .25s" style-hover="background:#0a2c44">Book a consultation</a>
+        <a href="https://wa.me/919526050033" style="font-size:16px;font-weight:700;color:#0f3a57;padding:19px 28px;border-radius:40px;border:1px solid rgba(15,58,87,.25)">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
 </div>
-<p style="font-size:14px;color:#8a949b;margin-top:48px">Tip: the home page adapts by region — add <code>?region=eu</code> or <code>?region=me</code> to the address to see the Europe &amp; USA or Middle East version.</p>
-</main></body></html>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { word: 0, need: null, region: 'in', cat: 'setup', stage: 'early', sector: 'manufacturing', t: 0, faq: 0, ready: !!window.VT };
+  componentDidMount() {
+    this._iv = setInterval(() => { if (window.VT) { clearInterval(this._iv); this.setState({ ready: true }); setTimeout(() => window.VT.reveal(), 60); } }, 30);
+    const q = new URLSearchParams(location.search).get('region'); let saved = null; try { saved = localStorage.getItem('vt-region'); } catch (e) {}
+    if (q || saved) { this.setState({ region: q || saved }); return; }
+    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+    const me = /Dubai|Riyadh|Qatar|Bahrain|Kuwait|Muscat/.test(tz);
+    this.setState({ region: /Kolkata|Calcutta/.test(tz) ? 'in' : me ? 'me' : /^(Europe|America|Atlantic)\//.test(tz) ? 'eu' : 'in' });
+    fetch('https://ipapi.co/json/').then(r => r.json()).then(d => {
+      const c = d && d.country_code; if (!c) return;
+      const ME = ['AE','SA','QA','BH','KW','OM']; this.setState({ region: c === 'IN' ? 'in' : ME.includes(c) ? 'me' : 'eu' });
+    }).catch(() => {});
+    this._w = setInterval(() => this.setState(s => ({ word: (s.word + 1) % 4 })), 2800);
+    this._a = setInterval(() => this.setState(s => ({ t: (s.t + 1) % 4 })), 8000);
+  }
+  componentDidUpdate() { document.querySelectorAll('img[data-src]').forEach(im => { const s = im.getAttribute('data-src'); if (s && s.startsWith('http') && im.getAttribute('src') !== s) im.setAttribute('src', s); }); }
+  componentWillUnmount() { clearInterval(this._iv); clearInterval(this._w); clearInterval(this._a); }
+  regionData() {
+    return {
+      in: { eyebrow: 'For Indian SMEs · Funding · Trade · Global expansion', h1a: 'Start right.', h1b: 'Stay compliant.', words: ['Raise capital.', 'Claim govt support.', 'Trade globally.', 'Expand abroad.'],
+        sub: 'Government grants and subsidies, export and customs schemes, and company setup in the UAE, Europe and the USA — from one chartered-led team.',
+        cta1: 'Check funding eligibility', cta1href: '#finder', cta2: 'Expand abroad →', cta2href: 'service.html?s=uae-setup',
+        trust: ['Chartered-led team', 'Grants & trade scheme specialists', 'Setup support in UAE, Europe & USA'],
+        needs: ['fund', 'trade', 'abroad', 'comply', 'start'],
+        officeLabel: 'Your team in India', office: 'Kochi (Head Office) · Bangalore', hours: 'Mon–Sat · 9:30–18:30 IST', tel: '+91 95260 50011', telHref: 'tel:+919526050011', waHref: 'https://wa.me/919526050033' },
+      eu: { eyebrow: 'For European, UK & US businesses', h1a: 'Enter India.', h1b: 'Outsource your books.', words: ['Stay compliant.', 'Save on cost.', 'Scale faster.'],
+        sub: 'Set up your Indian subsidiary, stay FEMA-compliant, and hand your bookkeeping, VAT and reporting to a chartered team — with an office in Brussels, in your time zone.',
+        cta1: 'Book a call (CET hours)', cta1href: 'contact.html', cta2: 'Outsource your accounting →', cta2href: 'service.html?s=outsourced-accounting',
+        trust: ['Brussels office, CET working hours', 'IFRS, Xero, QuickBooks & Sage', 'NDA & secure data handling'],
+        needs: ['india', 'outsource', 'comply', 'fund'],
+        officeLabel: 'Your team in Europe', office: 'Brussels, Belgium', hours: 'Mon–Fri · 9:00–18:00 CET', tel: '+32 455 14 3567', telHref: 'tel:+32455143567', waHref: 'https://wa.me/32455143567' },
+      me: { eyebrow: 'For businesses in the UAE & GCC', h1a: 'Enter India.', h1b: 'Keep UAE books clean.', words: ['Stay compliant.', 'Trade with India.', 'Scale faster.'],
+        sub: 'Set up in India, trade across the corridor, and outsource your UAE VAT, corporate tax and bookkeeping to a chartered team with an office in Dubai.',
+        cta1: 'Book a call (UAE hours)', cta1href: 'contact.html', cta2: 'UAE VAT & corporate tax →', cta2href: 'service.html?s=uae-tax',
+        trust: ['Dubai office, Gulf working hours', 'UAE VAT & corporate tax', 'India entry & FEMA compliance'],
+        needs: ['india', 'outsource', 'trade', 'comply'],
+        officeLabel: 'Your team in the Middle East', office: 'Dubai, UAE', hours: 'Mon–Fri · 9:00–18:00 UAE time', tel: '+971 50 857 1482', telHref: 'tel:+971508571482', waHref: 'https://wa.me/919526050033' }
+    };
+  }
+  svc(id) { const VT = window.VT, s = VT.byId[id], c = VT.catById[s.cat]; return { ...s, href: VT.href(id), color: c.color, tint: c.tint }; }
+  renderVals() {
+    const VT = window.VT, st = this.state;
+    const needsDef = [
+      { id: 'start', label: 'Starting a business', items: ['business-formation', 'corporate-compliance', 'accounting', 'gst'] },
+      { id: 'comply', label: 'Staying compliant', items: ['gst', 'income-tax', 'financial-statements', 'corporate-compliance'] },
+      { id: 'fund', label: 'Raising funds', items: ['govt-funding', 'angel-seed', 'project-finance', 'valuation'] },
+      { id: 'trade', label: 'Trading globally', items: ['duty-exemption', 'duty-remission', 'import-facilitation', 'sez'] },
+      { id: 'india', label: 'Entering India', items: ['foreign-entity', 'fdi-odi', 'accounting', 'legal-drafting'] },
+      { id: 'abroad', label: 'Expanding abroad', items: ['uae-setup', 'eu-setup', 'us-setup', 'fdi-odi'] },
+      { id: 'outsource', label: 'Outsourcing accounting', items: ['outsourced-accounting', 'eu-vat', 'uae-tax', 'data-analytics'] }
+    ];
+    const REG = this.regionData();
+    const R = REG[st.region] || REG.in;
+    const need = st.need && R.needs.includes(st.need) ? st.need : R.needs[0];
+    const needsOrdered = R.needs.map(id => needsDef.find(n => n.id === id));
+    const needs = needsOrdered.map(n => ({ label: n.label, active: n.id === need, inactive: n.id !== need, pick: () => this.setState({ need: n.id }) }));
+    const needItems = VT ? needsDef.find(n => n.id === need).items.filter(id => VT.byId[id]).map(id => this.svc(id)) : [];
+    const regions = [['in', 'India'], ['eu', 'Europe & USA'], ['me', 'Middle East']].map(([id, label]) => ({ label, active: st.region === id, inactive: st.region !== id, pick: () => { try { localStorage.setItem('vt-region', id); } catch (e) {} this.setState({ region: id, need: null, word: 0 }); } }));
+    const cats = VT ? VT.cats.map(c => ({ ...c, count: VT.services.filter(s => s.cat === c.id).length, active: c.id === st.cat, inactive: c.id !== st.cat, pick: () => this.setState({ cat: c.id }) })) : [];
+    const ac = VT ? VT.catById[st.cat] : null;
+    const activeCat = ac ? { blurb: ac.blurb, items: VT.services.filter(s => s.cat === ac.id).map(s => this.svc(s.id)) } : { blurb: '', items: [] };
+    const U = id => 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=800&q=70';
+    const IND = [
+      ['1566073771259-6a8506099945', 'Tourism & Hospitality', 'Hotels, resorts, travel and restaurants — GST on services, licences, tourism incentives and project finance.'],
+      ['1577896851231-70ef18881754', 'Education', 'Schools, institutes and ed-tech — trust and society structures, exemptions and regulatory compliance.'],
+      ['1545816250-e12bedba42ba', 'Fisheries & Allied Activities', 'Fishing, aquaculture, processing and seafood exports — subsidies, export incentives and cold-chain funding.'],
+      ['1441986300917-64674bd600d8', 'Retail & Wholesale Trading', 'Stores, distributors and traders — inventory accounting, GST, working capital and import schemes.'],
+      ['1498050108023-c5249f4df085', 'IT & ITES', 'Software, SaaS and IT-enabled services — SEZ units, export of services, ESOPs and foreign investment.'],
+      ['1504674900247-0877df9cc836', 'Food Processing & Technologies', 'Processing units and food-tech — capital subsidies, PLI support, FSSAI-linked compliance and export benefits.'],
+      ['1611974789855-9c2a0a7236a3', 'Financial Services', 'NBFCs, fintechs and advisory firms — structuring, regulatory filings, audits and investor readiness.'],
+      ['1610375461246-83df859d849d', 'Gold & Precious Metals', 'Jewellers, bullion traders and refiners — GST, customs, inventory controls and export schemes.'],
+      ['1593941707882-a5bba14938c7', 'Electric Vehicles', 'EV makers, component suppliers and charging networks — PLI, state EV incentives and import planning.'],
+      ['1509391366360-2e959784a276', 'Renewable Energy', 'Solar, wind and storage projects — project finance, subsidies, SPV structuring and duty benefits.'],
+      ['1581091226825-a6a2a5aee158', 'Engineering Research & Development', 'ER&D centres and design services — R&D incentives, GCC setup, transfer pricing and IP.'],
+      ['1532996122724-e3c354a0b15b', 'Recycling & Waste Management', 'Recyclers and waste processors — EPR compliance, green funding, subsidies and licensing.'],
+      ['1489599849927-2ee91cede3ba', 'Movies & Entertainment', 'Production houses, studios and OTT — project accounting, co-production structures, GST and film incentives.'],
+      ['1519003722824-194d4455a60c', 'Transportation & Logistics', 'Fleet operators, freight and logistics — GST on transport, vehicle finance, customs and warehousing.']
+    ].map(([id, name, d]) => ({ img: U(id), name, d }));
+    const stageDef = [['idea', 'Idea / pre-launch'], ['early', 'Early-stage startup'], ['growing', 'Growing SME'], ['established', 'Established business']];
+    const sectorDef = [['manufacturing', 'Manufacturing'], ['tech', 'Technology'], ['export', 'Import / export'], ['services', 'Services']];
+    const stages = stageDef.map(([id, label]) => ({ label, active: id === st.stage, inactive: id !== st.stage, pick: () => this.setState({ stage: id }) }));
+    const sectors = sectorDef.map(([id, label]) => ({ label, active: id === st.sector, inactive: id !== st.sector, pick: () => this.setState({ sector: id }) }));
+    const finderResults = VT ? VT.finder(st.stage, st.sector).map((id, i) => ({ ...this.svc(id), num: '0' + (i + 1) })) : [];
+    const finderLabel = stageDef.find(x => x[0] === st.stage)[1] + ' · ' + sectorDef.find(x => x[0] === st.sector)[1];
+    const T = [
+      { q: 'Vittree incorporated our company, set up GST and our books in under a month. Two years on, they still run every filing without us chasing.', who: 'Founder', org: 'D2C consumer brand, Kochi' },
+      { q: 'They identified a state capital subsidy and a bonded-manufacturing licence we had never heard of. The duty deferment alone changed our cash flow.', who: 'Managing Director', org: 'Precision engineering manufacturer' },
+      { q: 'Setting up our Indian subsidiary from Europe felt daunting. Vittree handled incorporation, FDI reporting and accounting end to end.', who: 'CFO', org: 'European technology company' },
+      { q: 'Our pitch deck, model and valuation were investor-ready in six weeks. We closed our seed round the following quarter.', who: 'Co-founder', org: 'SaaS startup, Bengaluru' }
+    ];
+    const F = [
+      { q: 'Do you work with businesses outside India?', a: 'Yes. We support foreign companies setting up in India and Indian companies expanding abroad, with offices across India, Europe and the Middle East.' },
+      { q: 'How are your fees structured?', a: 'Most one-time services are fixed fee. Ongoing compliance and accounting are on a monthly retainer. Funding work may include a success component — always agreed upfront.' },
+      { q: 'Can you take over from our current accountant?', a: 'Yes. We start with a review of past filings and books, fix any gaps, and then take over the compliance calendar.' },
+      { q: 'Which government schemes can you help with?', a: 'Central and state startup grants, MSME capital and interest subsidies, PLI schemes, CGTMSE loans, and trade schemes for duty-free imports and export refunds.' },
+      { q: 'How quickly can we get started?', a: 'Usually within a day of your first consultation. For incorporation we can often file within the same week once documents are ready.' }
+    ];
+    const words = R.words;
+    return {
+      needs, needItems, cats, activeCat, stages, sectors, finderResults, finderLabel,
+      industriesLoop: IND.concat(IND),
+      R, regions,
+      heroWord: React.createElement('em', { key: st.region + st.word, style: { fontStyle: 'italic', color: '#3b7a25', display: 'inline-block', animation: 'vtWord .7s cubic-bezier(.2,.7,.2,1) both' } }, words[st.word % words.length]),
+      currentT: [T[st.t]],
+      tDots: T.map((_, i) => ({ active: i === st.t, inactive: i !== st.t, pick: () => this.setState({ t: i }) })),
+      prevT: () => this.setState(s => ({ t: (s.t + 3) % 4 })),
+      nextT: () => this.setState(s => ({ t: (s.t + 1) % 4 })),
+      faqs: F.map((f, i) => ({ ...f, open: st.faq === i, rot: st.faq === i ? 45 : 0, toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i })) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

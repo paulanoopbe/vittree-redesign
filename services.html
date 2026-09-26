@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex,nofollow">
+<title>Services — Incorporation, Tax, Legal, Funding &amp; Trade | Vittree</title>
+<meta name="description" content="Vittree services across setup, accounting and tax, legal, funding and trade.">
+<link rel="icon" type="image/png" href="assets/vittree-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="site.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:110px}
+  body{font-family:'Hanken Grotesk',sans-serif;background:#fff;color:#16212b;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  a:hover{color:inherit}
+  ::selection{background:#5aa83a;color:#fff}
+  @keyframes vtUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div data-screen-label="Services v2" style="position:relative;width:100%;overflow-x:hidden">
+  <dc-import name="SiteNav" active="services" hint-size="100%,84px"></dc-import>
+
+  <header data-p="hero" style="background:#f5f8f5;padding:200px 40px 120px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3b7a25;margin-bottom:28px;animation:vtUp .7s ease both">Services</div>
+      <h1 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(48px,6vw,88px);line-height:1.02;letter-spacing:-.03em;color:#0f3a57;margin-bottom:28px;max-width:860px;animation:vtUp .8s cubic-bezier(.2,.7,.2,1) .08s both">Services built around <em style="color:#3b7a25">your stage.</em></h1>
+      <p style="font-size:20px;line-height:1.65;color:#4a5660;max-width:620px;margin-bottom:48px">Services across setup, accounting, legal, funding and trade. Search or jump to a category to find what you need.</p>
+      <div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:60px;padding:8px 8px 8px 28px;box-shadow:0 20px 50px rgba(15,58,87,.1);max-width:640px;margin-bottom:48px">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.5" stroke="#0f3a57" stroke-width="1.8"></circle><path d="M14 14l4 4" stroke="#0f3a57" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        <input value="{{ q }}" onChange="{{ onQ }}" placeholder="Search e.g. GST, grants, LLP, export refunds…" style="flex:1;min-width:0;border:none;outline:none;font-family:inherit;font-size:17px;color:#16212b;background:transparent;padding:14px 0">
+        <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}"><span onClick="{{ clearQ }}" style="font-size:14px;font-weight:600;color:#6a747b;padding:10px 16px;cursor:pointer">Clear</span></sc-if>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px 32px;animation:vtUp .8s cubic-bezier(.2,.7,.2,1) .16s both">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+          <a href="#{{ c.id }}" style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;color:#0f3a57;padding:6px 0" style-hover="color:#3b7a25"><span style="width:8px;height:8px;border-radius:50%;background:{{ c.color }}"></span>{{ c.name }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </header>
+
+  <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+    <section id="{{ c.id }}" data-p="pad" style="background:#fff;padding:140px 40px 0">
+      <div data-g="split" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:96px;align-items:start">
+        <div data-s="static" style="position:sticky;top:130px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="width:10px;height:10px;border-radius:50%;background:{{ c.color }}"></span><span style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6a747b">{{ c.count }}</span></div>
+          <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(34px,3.6vw,48px);line-height:1.08;letter-spacing:-.02em;color:#0f3a57;margin-bottom:20px">{{ c.name }}</h2>
+          <p style="font-size:17px;line-height:1.65;color:#5a646c;max-width:380px">{{ c.blurb }}</p>
+        </div>
+        <sc-if value="{{ c.sub }}" hint-placeholder-val="{{ false }}">
+          <a href="accounting.html" style="display:block;background:#e6f3ef;border-radius:24px;padding:48px;transition:transform .3s" style-hover="transform:translateY(-4px)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px"><span style="width:8px;height:8px;border-radius:50%;background:#2e9a8a"></span><span style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1f6f63">Accounting &amp; Compliance</span></div>
+            <div style="font-family:'Spectral',serif;font-size:30px;line-height:1.2;color:#0f3a57;margin-bottom:28px">For businesses in India and firms abroad.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">
+              <sc-for list="{{ c.items }}" as="s" hint-placeholder-count="6"><span style="font-size:14.5px;font-weight:600;color:#0f3a57;background:#fff;padding:10px 16px;border-radius:40px">{{ s.name }}</span></sc-for>
+            </div>
+            <span style="font-size:16px;font-weight:700;color:#1f6f63">Go to Accounting &amp; Compliance →</span>
+          </a>
+        </sc-if>
+        <sc-if value="{{ c.full }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(22,33,43,.1)">
+          <sc-for list="{{ c.items }}" as="s" hint-placeholder-count="4">
+            <a href="{{ s.href }}" style="display:flex;justify-content:space-between;align-items:center;gap:32px;padding:30px 0;border-bottom:1px solid rgba(22,33,43,.1);transition:padding .3s" style-hover="padding-left:10px">
+              <span style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                <span style="font-family:'Spectral',serif;font-size:26px;line-height:1.2;color:#0f3a57">{{ s.name }}</span>
+                <span style="font-size:16px;line-height:1.55;color:#5a646c">{{ s.short }}</span>
+              </span>
+              <span style="font-size:20px;color:#3b7a25;flex-shrink:0">→</span>
+            </a>
+          </sc-for>
+        </div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-for>
+
+  <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+    <section data-p="pad" style="padding:120px 40px 0">
+      <div style="max-width:1200px;margin:0 auto;text-align:center;padding:80px 20px;background:#f5f8f5;border-radius:24px">
+        <h3 style="font-family:'Spectral',serif;font-weight:400;font-size:32px;color:#0f3a57;margin-bottom:12px">No exact match for "{{ q }}"</h3>
+        <p style="font-size:17px;color:#5a646c;margin-bottom:28px">We probably still do it. Tell us what you need.</p>
+        <a href="contact.html" style="display:inline-block;font-size:15px;font-weight:700;color:#fff;background:#0f3a57;padding:16px 28px;border-radius:40px">Ask our team</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <section data-p="pad" style="background:#fff;padding:160px 40px">
+    <div style="max-width:1200px;margin:0 auto;border-radius:28px;background:#e8f3e1;padding:80px 72px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap" data-b="box">
+      <div>
+        <h2 style="font-family:'Spectral',serif;font-weight:400;font-size:clamp(32px,3.4vw,46px);line-height:1.1;color:#1f4d12;margin-bottom:12px">Need several of these?</h2>
+        <p style="font-size:18px;color:#3f5a35">Most clients do. We'll bundle them into one plan with one point of contact.</p>
+      </div>
+      <a href="contact.html" style="font-size:16px;font-weight:700;color:#fff;background:#3b7a25;padding:19px 32px;border-radius:40px;transition:background .25s" style-hover="background:#1f4d12">Get a bundled quote</a>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._iv = setInterval(() => { if (window.VT) { clearInterval(this._iv); this.forceUpdate(); const h = location.hash ? location.hash.slice(1) : new URLSearchParams(location.search).get('c'); if (h) setTimeout(() => { const el = document.getElementById(h); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 110 }); }, 120); } }, 30);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  state = { q: '' };
+  renderVals() {
+    const VT = window.VT;
+    const q = this.state.q.trim().toLowerCase();
+    const m = (s, c) => !q || (s.name + ' ' + s.short + ' ' + s.includes.join(' ') + ' ' + c.name).toLowerCase().includes(q);
+    const cats = VT ? VT.cats.map(c => {
+      const items = VT.services.filter(s => s.cat === c.id && m(s, c)).map(s => ({ ...s, href: VT.href(s.id) }));
+      return { ...c, items, sub: !!c.sub, full: !c.sub, count: items.length + (items.length === 1 ? ' service' : ' services') };
+    }).filter(c => c.items.length) : [];
+    return {
+      cats, q: this.state.q, hasQ: !!this.state.q, empty: !!VT && cats.length === 0,
+      onQ: e => this.setState({ q: e.target.value }),
+      clearQ: () => this.setState({ q: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>
